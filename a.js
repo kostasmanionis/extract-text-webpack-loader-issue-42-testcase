@@ -1,1 +1,3 @@
-require("bundle?lazy!common.js");
+require.ensure("common.js", function() {
+
+});

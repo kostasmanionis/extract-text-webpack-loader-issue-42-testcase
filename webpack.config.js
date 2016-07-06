@@ -4,22 +4,6 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var path = require('path');
 
-
-var entries = {
-  // common: ["extjs", "underscore"],
-  "modules/patient_index": "patient_index",
-  // "modules/account": "account",
-  "modules/settings": "settings",
-  "modules/desktop": "desktop",
-  "modules/calendar": "calendar",
-  // "modules/remote_control": "remote_control",
-  // "modules/dashboard": "dashboard",
-  "modules/login": "login",
-  "modules/patients": "patients",
-  "modules/cryptor": "cryptor",
-  // "modules/wiki": "wiki"
-};
-
 module.exports = {
   entry: {
     a: 'a',
@@ -27,15 +11,11 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.css$/, loader: ExtractTextPlugin.extract("style", ["css"]) },
+      { test: /\.css$/, loader: ExtractTextPlugin.extract("text") },
     ]
   },
   plugins: [
-    new ExtractTextPlugin("[name].css"),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "common",
-      minChunks: 2
-    }),
+    new ExtractTextPlugin("style.css")
   ],
 
   resolve: {
